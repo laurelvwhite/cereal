@@ -10,10 +10,17 @@ mkdir -p "$CLUSTERS_DIR"
 
 make_page() {
   local name="$1"
+  local img_path="$2"
   local dest="$CLUSTERS_DIR/${name}.html"
 
   # Remove any directory that might exist at this path before writing
   [[ -d "$dest" ]] && rm -rf "$dest"
+
+  # Build the image block only if the file exists
+  local img_block=""
+  if [[ -f "$img_path" ]]; then
+    img_block="    <div class=\"cluster-img\"><img src=\"../files/${name}/${name}_not_labeled.png\" alt=\"${name}\" /></div>"
+  fi
 
   cat > "$dest" << HTML
 <!DOCTYPE html>
@@ -22,7 +29,7 @@ make_page() {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${name} — CEREAL Data Products</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../fonts/eb-garamond.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -129,6 +136,18 @@ make_page() {
       margin-bottom: 1.5rem;
     }
 
+    .cluster-img {
+      margin-bottom: 2rem;
+    }
+
+    .cluster-img img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--rule);
+      box-shadow: 0 0 24px var(--glow);
+    }
+
     main a:link    { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
     main a:visited { color: #e0aaff; }
     main a:hover   { color: #fff; }
@@ -162,6 +181,7 @@ make_page() {
     <p class="eyebrow">Cluster</p>
     <h1>${name}</h1>
     <div class="divider"></div>
+${img_block}
     <p>More info on ${name} coming soon.</p>
     <p><a href="../data.html">&larr; Back to Data</a></p>
   </main>
@@ -177,16 +197,19 @@ HTML
 }
 
 count=0
-for file in "$SCRIPT_DIR/lowm.txt" "$SCRIPT_DIR/highm.txt"; do
-  if [[ ! -f "$file" ]]; then
-    echo "Warning: $file not found, skipping." >&2
-    continue
-  fi
-  while read -r name _rest; do
-    [[ -z "$name" ]] && continue
-    make_page "$name"
-    (( count++ ))
-  done < "$file"
-done
+
+while read -r name _rest; do
+  [[ -z "$name" ]] && continue
+  img="$HOME/homeDropbox/lowmcereal/data/${name}/figures/${name}_not_labeled.png"
+  make_page "$name" "$img"
+  (( count++ ))
+done < "$SCRIPT_DIR/lowm.txt"
+
+while read -r name _rest; do
+  [[ -z "$name" ]] && continue
+  img="$HOME/homeDropbox/cereal/data/${name}/figures/${name}_not_labeled.png"
+  make_page "$name" "$img"
+  (( count++ ))
+done < "$SCRIPT_DIR/highm.txt"
 
 echo "Created $count cluster pages in $CLUSTERS_DIR/"
