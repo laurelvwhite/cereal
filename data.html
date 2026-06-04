@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data — CEREAL Data Products</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -51,14 +52,6 @@
 
     .logo span { color: var(--accent); }
 
-    .tagline {
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-style: italic;
-    }
-
     nav {
       margin-left: auto;
       display: flex;
@@ -80,7 +73,7 @@
     main {
       flex: 1;
       padding: 6rem 3rem 4rem;
-      max-width: 960px;
+      max-width: 1100px;
     }
 
     .eyebrow {
@@ -100,7 +93,16 @@
       letter-spacing: 0.02em;
       margin-bottom: 2rem;
       text-transform: uppercase;
-      white-space: nowrap;
+    }
+
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.45rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1.25rem;
     }
 
     .divider {
@@ -109,6 +111,10 @@
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       margin-bottom: 2rem;
       box-shadow: 0 0 8px var(--glow);
+    }
+
+    .section {
+      margin-bottom: 4rem;
     }
 
     p {
@@ -120,18 +126,71 @@
       margin-bottom: 1.5rem;
     }
 
-    main a:link {
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+
+    thead tr {
+      background: rgba(155, 93, 229, 0.12);
+      border-bottom: 1px solid var(--accent);
+    }
+
+    thead th {
+      padding: 0.75rem 1.1rem;
+      text-align: left;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--accent2);
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      font-weight: 600;
+      white-space: nowrap;
     }
 
-    main a:visited {
-      color: #e0aaff;
+    tbody tr {
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.12s;
     }
 
-    main a:hover {
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr:hover {
+      background: rgba(155, 93, 229, 0.07);
+    }
+
+    tbody td {
+      padding: 0.55rem 1.1rem;
+      color: var(--ink);
+      opacity: 0.88;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    tbody td:first-child {
+      font-style: italic;
+      opacity: 1;
+    }
+
+    tbody td a:link {
+      color: var(--accent2);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(199, 125, 255, 0.3);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    tbody td a:visited { color: #e0aaff; }
+
+    tbody td a:hover {
       color: #fff;
+      border-bottom-color: #fff;
     }
 
     footer {
@@ -160,10 +219,215 @@
   </header>
 
   <main>
-    <p class="eyebrow">Data</p>
     <h1>Data</h1>
     <div class="divider"></div>
-    <p>More content coming soon.</p>
+
+    <div class="section">
+      <h2>Low-Mass Clusters</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Cluster Name</th>
+              <th>RA</th>
+              <th>Dec</th>
+              <th><i>z</i></th>
+              <th>\(M_{500}\; (10^{14}\,M_\odot)\)</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr><td><a href="clusters/PSZ2G000.04+45.13.html">PSZ2G000.04+45.13</a></td><td>229.191</td><td>-1.01722</td><td>0.119800</td><td>3.96241</td></tr>
+          <tr><td><a href="clusters/PSZ2G006.68-35.55.html">PSZ2G006.68-35.55</a></td><td>308.706</td><td>-35.8251</td><td>0.0894000</td><td>4.16668</td></tr>
+          <tr><td><a href="clusters/PSZ2G007.76-36.83.html">PSZ2G007.76-36.83</a></td><td>310.439</td><td>-35.1878</td><td>0.0894620</td><td>2.63861</td></tr>
+          <tr><td><a href="clusters/PSZ2G008.80-35.18.html">PSZ2G008.80-35.18</a></td><td>308.660</td><td>-34.0615</td><td>0.0936000</td><td>2.97552</td></tr>
+          <tr><td><a href="clusters/PSZ2G018.73+23.56.html">PSZ2G018.73+23.56</a></td><td>255.578</td><td>-1.02403</td><td>0.0890000</td><td>3.96883</td></tr>
+          <tr><td><a href="clusters/PSZ2G018.84+22.43.html">PSZ2G018.84+22.43</a></td><td>256.607</td><td>-1.50328</td><td>0.0912000</td><td>3.60317</td></tr>
+          <tr><td><a href="clusters/PSZ2G028.63+50.15.html">PSZ2G028.63+50.15</a></td><td>235.033</td><td>17.8987</td><td>0.0916000</td><td>3.24914</td></tr>
+          <tr><td><a href="clusters/PSZ2G033.46-48.43.html">PSZ2G033.46-48.43</a></td><td>328.081</td><td>-19.6129</td><td>0.0943000</td><td>4.07692</td></tr>
+          <tr><td><a href="clusters/PSZ2G037.05-70.55.html">PSZ2G037.05-70.55</a></td><td>351.525</td><td>-24.1207</td><td>0.0880000</td><td>2.21629</td></tr>
+          <tr><td><a href="clusters/PSZ2G041.43-66.81.html">PSZ2G041.43-66.81</a></td><td>348.108</td><td>-21.5507</td><td>0.110800</td><td>2.70974</td></tr>
+          <tr><td><a href="clusters/PSZ2G045.50-37.21.html">PSZ2G045.50-37.21</a></td><td>321.320</td><td>-6.97814</td><td>0.115300</td><td>2.80749</td></tr>
+          <tr><td><a href="clusters/PSZ2G047.73-60.15.html">PSZ2G047.73-60.15</a></td><td>342.758</td><td>-16.4002</td><td>0.122100</td><td>3.36444</td></tr>
+          <tr><td><a href="clusters/PSZ2G048.75+53.18.html">PSZ2G048.75+53.18</a></td><td>234.967</td><td>30.6960</td><td>0.0980000</td><td>2.52819</td></tr>
+          <tr><td><a href="clusters/PSZ2G049.32+44.37.html">PSZ2G049.32+44.37</a></td><td>245.140</td><td>29.8941</td><td>0.0972000</td><td>3.67121</td></tr>
+          <tr><td><a href="clusters/PSZ2G049.69-49.46.html">PSZ2G049.69-49.46</a></td><td>333.618</td><td>-10.3524</td><td>0.0980000</td><td>3.63175</td></tr>
+          <tr><td><a href="clusters/PSZ2G059.72-46.21.html">PSZ2G059.72-46.21</a></td><td>334.648</td><td>-2.95741</td><td>0.0902000</td><td>2.22578</td></tr>
+          <tr><td><a href="clusters/PSZ2G062.44-46.43.html">PSZ2G062.44-46.43</a></td><td>335.986</td><td>-1.61691</td><td>0.0906000</td><td>3.46684</td></tr>
+          <tr><td><a href="clusters/PSZ2G065.32-64.84.html">PSZ2G065.32-64.84</a></td><td>351.319</td><td>-12.1252</td><td>0.0852000</td><td>2.48354</td></tr>
+          <tr><td><a href="clusters/PSZ2G065.81-83.77.html">PSZ2G065.81-83.77</a></td><td>7.15038</td><td>-23.6319</td><td>0.112000</td><td>2.83182</td></tr>
+          <tr><td><a href="clusters/PSZ2G072.40-78.45.html">PSZ2G072.40-78.45</a></td><td>3.43054</td><td>-19.4862</td><td>0.0940000</td><td>2.75662</td></tr>
+          <tr><td><a href="clusters/PSZ2G080.41-33.24.html">PSZ2G080.41-33.24</a></td><td>336.540</td><td>17.3767</td><td>0.107200</td><td>3.77405</td></tr>
+          <tr><td><a href="clusters/PSZ2G083.14+66.57.html">PSZ2G083.14+66.57</a></td><td>213.445</td><td>43.6523</td><td>0.0890000</td><td>2.07491</td></tr>
+          <tr><td><a href="clusters/PSZ2G091.40-51.01.html">PSZ2G091.40-51.01</a></td><td>353.503</td><td>7.05729</td><td>0.0990000</td><td>2.68253</td></tr>
+          <tr><td><a href="clusters/PSZ2G099.57-58.64.html">PSZ2G099.57-58.64</a></td><td>0.945059</td><td>2.05365</td><td>0.0924000</td><td>2.23877</td></tr>
+          <tr><td><a href="clusters/PSZ2G113.29-29.69.html">PSZ2G113.29-29.69</a></td><td>2.93635</td><td>32.4325</td><td>0.107300</td><td>3.71007</td></tr>
+          <tr><td><a href="clusters/PSZ2G114.79-33.71.html">PSZ2G114.79-33.71</a></td><td>5.14564</td><td>28.6657</td><td>0.0940000</td><td>3.82442</td></tr>
+          <tr><td><a href="clusters/PSZ2G114.90-34.35.html">PSZ2G114.90-34.35</a></td><td>5.35256</td><td>28.0504</td><td>0.0948000</td><td>2.47232</td></tr>
+          <tr><td><a href="clusters/PSZ2G135.19+57.88.html">PSZ2G135.19+57.88</a></td><td>180.539</td><td>58.0593</td><td>0.103100</td><td>2.21447</td></tr>
+          <tr><td><a href="clusters/PSZ2G137.74-27.08.html">PSZ2G137.74-27.08</a></td><td>28.7835</td><td>33.9443</td><td>0.0872000</td><td>2.83373</td></tr>
+          <tr><td><a href="clusters/PSZ2G147.11+21.84.html">PSZ2G147.11+21.84</a></td><td>94.6302</td><td>67.4056</td><td>0.112700</td><td>3.38010</td></tr>
+          <tr><td><a href="clusters/PSZ2G152.70+25.46.html">PSZ2G152.70+25.46</a></td><td>106.096</td><td>63.3173</td><td>0.0980000</td><td>2.94593</td></tr>
+          <tr><td><a href="clusters/PSZ2G162.33+25.03.html">PSZ2G162.33+25.03</a></td><td>108.562</td><td>54.6900</td><td>0.104300</td><td>2.85263</td></tr>
+          <tr><td><a href="clusters/PSZ2G178.94+56.00.html">PSZ2G178.94+56.00</a></td><td>154.948</td><td>41.0098</td><td>0.0922000</td><td>2.23120</td></tr>
+          <tr><td><a href="clusters/PSZ2G192.18+56.12.html">PSZ2G192.18+56.12</a></td><td>154.091</td><td>33.6604</td><td>0.124000</td><td>3.62056</td></tr>
+          <tr><td><a href="clusters/PSZ2G198.47-23.69.html">PSZ2G198.47-23.69</a></td><td>75.3424</td><td>1.15538</td><td>0.124800</td><td>3.62938</td></tr>
+          <tr><td><a href="clusters/PSZ2G200.63-64.71.html">PSZ2G200.63-64.71</a></td><td>39.1086</td><td>-19.3489</td><td>0.0907000</td><td>2.47962</td></tr>
+          <tr><td><a href="clusters/PSZ2G206.22+24.89.html">PSZ2G206.22+24.89</a></td><td>122.769</td><td>16.6288</td><td>0.0925000</td><td>2.27481</td></tr>
+          <tr><td><a href="clusters/PSZ2G224.38-24.95.html">PSZ2G224.38-24.95</a></td><td>84.5847</td><td>-20.6454</td><td>0.0915000</td><td>2.53656</td></tr>
+          <tr><td><a href="clusters/PSZ2G226.16-21.95.html">PSZ2G226.16-21.95</a></td><td>88.2137</td><td>-21.0650</td><td>0.0989000</td><td>3.87321</td></tr>
+          <tr><td><a href="clusters/PSZ2G228.62+68.44.html">PSZ2G228.62+68.44</a></td><td>170.801</td><td>19.6118</td><td>0.104200</td><td>2.91018</td></tr>
+          <tr><td><a href="clusters/PSZ2G261.88+62.85.html">PSZ2G261.88+62.85</a></td><td>175.336</td><td>5.70933</td><td>0.0974000</td><td>2.41085</td></tr>
+          <tr><td><a href="clusters/PSZ2G268.30+28.89.html">PSZ2G268.30+28.89</a></td><td>159.599</td><td>-24.8842</td><td>0.123000</td><td>2.83291</td></tr>
+          <tr><td><a href="clusters/PSZ2G277.38+47.07.html">PSZ2G277.38+47.07</a></td><td>175.367</td><td>-12.2990</td><td>0.119500</td><td>2.80771</td></tr>
+          <tr><td><a href="clusters/PSZ2G283.91+73.87.html">PSZ2G283.91+73.87</a></td><td>187.555</td><td>11.7964</td><td>0.0852000</td><td>2.98809</td></tr>
+          <tr><td><a href="clusters/PSZ2G284.59+70.84.html">PSZ2G284.59+70.84</a></td><td>186.864</td><td>8.83256</td><td>0.0896000</td><td>2.20054</td></tr>
+          <tr><td><a href="clusters/PSZ2G295.34+23.34.html">PSZ2G295.34+23.34</a></td><td>183.891</td><td>-38.9929</td><td>0.119000</td><td>4.23058</td></tr>
+          <tr><td><a href="clusters/PSZ2G302.85-88.63.html">PSZ2G302.85-88.63</a></td><td>12.8615</td><td>-28.4978</td><td>0.112500</td><td>3.10402</td></tr>
+          <tr><td><a href="clusters/PSZ2G314.26-55.35.html">PSZ2G314.26-55.35</a></td><td>359.706</td><td>-60.5965</td><td>0.0989000</td><td>2.26113</td></tr>
+          <tr><td><a href="clusters/PSZ2G321.98-47.96.html">PSZ2G321.98-47.96</a></td><td>342.456</td><td>-64.4152</td><td>0.0940000</td><td>4.02315</td></tr>
+          <tr><td><a href="clusters/PSZ2G322.77+59.52.html">PSZ2G322.77+59.52</a></td><td>202.777</td><td>-1.80554</td><td>0.0852000</td><td>3.22614</td></tr>
+          <tr><td><a href="clusters/PSZ2G324.54-44.97.html">PSZ2G324.54-44.97</a></td><td>334.505</td><td>-65.1770</td><td>0.0951000</td><td>3.00328</td></tr>
+          <tr><td><a href="clusters/PSZ2G336.60-55.43.html">PSZ2G336.60-55.43</a></td><td>341.572</td><td>-52.7221</td><td>0.0965000</td><td>4.27963</td></tr>
+          <tr><td><a href="clusters/PSZ2G340.46-52.20.html">PSZ2G340.46-52.20</a></td><td>335.080</td><td>-52.4518</td><td>0.102000</td><td>2.53566</td></tr>
+          <tr><td><a href="clusters/PSZ2G342.51-50.97.html">PSZ2G342.51-50.97</a></td><td>332.383</td><td>-51.8228</td><td>0.106500</td><td>2.36890</td></tr>
+          <tr><td><a href="clusters/PSZ2G346.30-30.35.html">PSZ2G346.30-30.35</a></td><td>298.310</td><td>-52.0665</td><td>0.106900</td><td>2.94926</td></tr>
+          <tr><td><a href="clusters/PSZ2G346.36-77.71.html">PSZ2G346.36-77.71</a></td><td>2.48662</td><td>-35.6649</td><td>0.120083</td><td>2.46446</td></tr>
+          <tr><td><a href="clusters/PSZ2G352.28-77.66.html">PSZ2G352.28-77.66</a></td><td>1.48968</td><td>-34.7015</td><td>0.114700</td><td>4.00166</td></tr>
+          <tr><td><a href="clusters/PSZ2G356.53+28.66.html">PSZ2G356.53+28.66</a></td><td>239.613</td><td>-14.1607</td><td>0.0970000</td><td>2.95051</td></tr>
+          <tr><td><a href="clusters/PSZ2G358.21-87.49.html">PSZ2G358.21-87.49</a></td><td>10.5193</td><td>-28.5334</td><td>0.108200</td><td>3.64785</td></tr>
+          <tr><td><a href="clusters/PSZ2G358.94-70.57.html">PSZ2G358.94-70.57</a></td><td>352.780</td><td>-36.5498</td><td>0.0957000</td><td>2.52327</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>High-Mass Clusters</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Cluster Name</th>
+              <th>RA</th>
+              <th>Dec</th>
+              <th><i>z</i></th>
+              <th>\(M_{500}\; (10^{14}\,M_\odot)\)</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr><td><a href="clusters/PSZ2G000.13+78.04.html">PSZ2G000.13+78.04</a></td><td>203.559</td><td>20.2560</td><td>0.171000</td><td>5.12239</td></tr>
+          <tr><td><a href="clusters/PSZ2G000.40-41.86.html">PSZ2G000.40-41.86</a></td><td>316.084</td><td>-41.3542</td><td>0.165100</td><td>5.29705</td></tr>
+          <tr><td><a href="clusters/PSZ2G002.82+39.23.html">PSZ2G002.82+39.23</a></td><td>235.015</td><td>-3.28514</td><td>0.153300</td><td>5.73602</td></tr>
+          <tr><td><a href="clusters/PSZ2G003.91-42.03.html">PSZ2G003.91-42.03</a></td><td>316.467</td><td>-38.7532</td><td>0.152100</td><td>4.71620</td></tr>
+          <tr><td><a href="clusters/PSZ2G003.93-59.41.html">PSZ2G003.93-59.41</a></td><td>338.608</td><td>-37.7413</td><td>0.151000</td><td>7.19475</td></tr>
+          <tr><td><a href="clusters/PSZ2G006.38+62.03.html">PSZ2G006.38+62.03</a></td><td>218.308</td><td>12.4863</td><td>0.235712</td><td>4.81395</td></tr>
+          <tr><td><a href="clusters/PSZ2G014.09+38.38.html">PSZ2G014.09+38.38</a></td><td>240.856</td><td>3.32237</td><td>0.222200</td><td>4.72577</td></tr>
+          <tr><td><a href="clusters/PSZ2G018.32-28.50.html">PSZ2G018.32-28.50</a></td><td>303.700</td><td>-24.5105</td><td>0.161200</td><td>5.09226</td></tr>
+          <tr><td><a href="clusters/PSZ2G021.10+33.24.html">PSZ2G021.10+33.24</a></td><td>248.199</td><td>5.59219</td><td>0.151400</td><td>7.78831</td></tr>
+          <tr><td><a href="clusters/PSZ2G024.44+22.76.html">PSZ2G024.44+22.76</a></td><td>258.835</td><td>3.17182</td><td>0.164700</td><td>4.50584</td></tr>
+          <tr><td><a href="clusters/PSZ2G026.73-38.94.html">PSZ2G026.73-38.94</a></td><td>316.843</td><td>-21.1840</td><td>0.202000</td><td>5.40905</td></tr>
+          <tr><td><a href="clusters/PSZ2G028.89+60.13.html">PSZ2G028.89+60.13</a></td><td>225.090</td><td>21.3594</td><td>0.153000</td><td>4.54262</td></tr>
+          <tr><td><a href="clusters/PSZ2G033.97-76.61.html">PSZ2G033.97-76.61</a></td><td>357.927</td><td>-26.0953</td><td>0.226400</td><td>7.55754</td></tr>
+          <tr><td><a href="clusters/PSZ2G039.85-39.96.html">PSZ2G039.85-39.96</a></td><td>321.751</td><td>-12.1617</td><td>0.176000</td><td>5.91514</td></tr>
+          <tr><td><a href="clusters/PSZ2G041.45+29.10.html">PSZ2G041.45+29.10</a></td><td>259.466</td><td>19.6925</td><td>0.178000</td><td>5.58706</td></tr>
+          <tr><td><a href="clusters/PSZ2G045.13+67.78.html">PSZ2G045.13+67.78</a></td><td>217.996</td><td>29.5567</td><td>0.219100</td><td>4.82537</td></tr>
+          <tr><td><a href="clusters/PSZ2G047.71-59.47.html">PSZ2G047.71-59.47</a></td><td>342.121</td><td>-16.1084</td><td>0.247200</td><td>4.61034</td></tr>
+          <tr><td><a href="clusters/PSZ2G049.18+65.05.html">PSZ2G049.18+65.05</a></td><td>221.119</td><td>31.2334</td><td>0.234000</td><td>4.72975</td></tr>
+          <tr><td><a href="clusters/PSZ2G049.22+30.87.html">PSZ2G049.22+30.87</a></td><td>260.022</td><td>26.6316</td><td>0.164400</td><td>5.90415</td></tr>
+          <tr><td><a href="clusters/PSZ2G054.99+53.41.html">PSZ2G054.99+53.41</a></td><td>234.902</td><td>34.4313</td><td>0.229000</td><td>5.72796</td></tr>
+          <tr><td><a href="clusters/PSZ2G055.59+31.85.html">PSZ2G055.59+31.85</a></td><td>260.615</td><td>32.1354</td><td>0.224000</td><td>7.77852</td></tr>
+          <tr><td><a href="clusters/PSZ2G055.95-34.89.html">PSZ2G055.95-34.89</a></td><td>323.826</td><td>1.41045</td><td>0.231000</td><td>6.73170</td></tr>
+          <tr><td><a href="clusters/PSZ2G057.08-74.45.html">PSZ2G057.08-74.45</a></td><td>357.783</td><td>-19.9825</td><td>0.248000</td><td>4.70793</td></tr>
+          <tr><td><a href="clusters/PSZ2G057.73+51.58.html">PSZ2G057.73+51.58</a></td><td>237.141</td><td>36.1034</td><td>0.238200</td><td>5.58602</td></tr>
+          <tr><td><a href="clusters/PSZ2G059.81-39.09.html">PSZ2G059.81-39.09</a></td><td>329.038</td><td>1.42100</td><td>0.224000</td><td>4.99100</td></tr>
+          <tr><td><a href="clusters/PSZ2G067.17+67.46.html">PSZ2G067.17+67.46</a></td><td>216.503</td><td>37.8160</td><td>0.171200</td><td>7.23589</td></tr>
+          <tr><td><a href="clusters/PSZ2G067.52+34.75.html">PSZ2G067.52+34.75</a></td><td>259.313</td><td>42.4618</td><td>0.175400</td><td>4.53787</td></tr>
+          <tr><td><a href="clusters/PSZ2G070.08-31.79.html">PSZ2G070.08-31.79</a></td><td>328.919</td><td>12.5150</td><td>0.192000</td><td>4.95660</td></tr>
+          <tr><td><a href="clusters/PSZ2G073.97-27.82.html">PSZ2G073.97-27.82</a></td><td>328.423</td><td>17.6986</td><td>0.232900</td><td>9.79910</td></tr>
+          <tr><td><a href="clusters/PSZ2G074.75-24.59.html">PSZ2G074.75-24.59</a></td><td>326.537</td><td>20.4778</td><td>0.250000</td><td>5.02521</td></tr>
+          <tr><td><a href="clusters/PSZ2G083.86+85.09.html">PSZ2G083.86+85.09</a></td><td>196.462</td><td>30.8931</td><td>0.183200</td><td>4.65786</td></tr>
+          <tr><td><a href="clusters/PSZ2G092.16-66.01.html">PSZ2G092.16-66.01</a></td><td>0.787839</td><td>-6.07221</td><td>0.232000</td><td>5.95735</td></tr>
+          <tr><td><a href="clusters/PSZ2G092.71+73.46.html">PSZ2G092.71+73.46</a></td><td>203.801</td><td>41.0004</td><td>0.227900</td><td>8.12602</td></tr>
+          <tr><td><a href="clusters/PSZ2G097.72+38.12.html">PSZ2G097.72+38.12</a></td><td>248.978</td><td>66.2023</td><td>0.170900</td><td>6.58515</td></tr>
+          <tr><td><a href="clusters/PSZ2G101.52-29.98.html">PSZ2G101.52-29.98</a></td><td>351.596</td><td>29.3258</td><td>0.227000</td><td>4.87862</td></tr>
+          <tr><td><a href="clusters/PSZ2G104.71-54.54.html">PSZ2G104.71-54.54</a></td><td>2.33951</td><td>6.82925</td><td>0.244062</td><td>4.89872</td></tr>
+          <tr><td><a href="clusters/PSZ2G113.81+44.35.html">PSZ2G113.81+44.35</a></td><td>213.533</td><td>71.2823</td><td>0.225000</td><td>4.62771</td></tr>
+          <tr><td><a href="clusters/PSZ2G114.99+70.36.html">PSZ2G114.99+70.36</a></td><td>196.729</td><td>46.5257</td><td>0.225900</td><td>5.70222</td></tr>
+          <tr><td><a href="clusters/PSZ2G118.58+28.57.html">PSZ2G118.58+28.57</a></td><td>261.231</td><td>85.8912</td><td>0.178000</td><td>5.98298</td></tr>
+          <tr><td><a href="clusters/PSZ2G124.20-36.48.html">PSZ2G124.20-36.48</a></td><td>14.0018</td><td>26.3784</td><td>0.197100</td><td>7.65418</td></tr>
+          <tr><td><a href="clusters/PSZ2G125.30-27.99.html">PSZ2G125.30-27.99</a></td><td>15.4081</td><td>34.8345</td><td>0.223276</td><td>5.02478</td></tr>
+          <tr><td><a href="clusters/PSZ2G127.44-34.74.html">PSZ2G127.44-34.74</a></td><td>17.0569</td><td>27.9786</td><td>0.248664</td><td>4.89851</td></tr>
+          <tr><td><a href="clusters/PSZ2G140.63+29.45.html">PSZ2G140.63+29.45</a></td><td>115.521</td><td>74.2536</td><td>0.214900</td><td>5.02428</td></tr>
+          <tr><td><a href="clusters/PSZ2G143.62+42.61.html">PSZ2G143.62+42.61</a></td><td>150.843</td><td>67.1371</td><td>0.206000</td><td>4.94657</td></tr>
+          <tr><td><a href="clusters/PSZ2G145.19+32.14.html">PSZ2G145.19+32.14</a></td><td>122.769</td><td>70.0490</td><td>0.223000</td><td>4.87007</td></tr>
+          <tr><td><a href="clusters/PSZ2G149.39-36.84.html">PSZ2G149.39-36.84</a></td><td>35.3753</td><td>21.3546</td><td>0.170000</td><td>5.41687</td></tr>
+          <tr><td><a href="clusters/PSZ2G149.75+34.68.html">PSZ2G149.75+34.68</a></td><td>127.715</td><td>65.8623</td><td>0.181800</td><td>8.85906</td></tr>
+          <tr><td><a href="clusters/PSZ2G150.90-39.05.html">PSZ2G150.90-39.05</a></td><td>35.4972</td><td>18.8492</td><td>0.224900</td><td>5.00137</td></tr>
+          <tr><td><a href="clusters/PSZ2G153.00-58.26.html">PSZ2G153.00-58.26</a></td><td>28.1451</td><td>0.990336</td><td>0.227000</td><td>5.04463</td></tr>
+          <tr><td><a href="clusters/PSZ2G159.91-73.50.html">PSZ2G159.91-73.50</a></td><td>22.9809</td><td>-13.6140</td><td>0.206000</td><td>8.46425</td></tr>
+          <tr><td><a href="clusters/PSZ2G161.94-48.17.html">PSZ2G161.94-48.17</a></td><td>37.8755</td><td>6.97162</td><td>0.220300</td><td>6.53591</td></tr>
+          <tr><td><a href="clusters/PSZ2G162.49-71.98.html">PSZ2G162.49-71.98</a></td><td>24.5100</td><td>-12.7974</td><td>0.210800</td><td>4.64372</td></tr>
+          <tr><td><a href="clusters/PSZ2G163.69+53.52.html">PSZ2G163.69+53.52</a></td><td>155.597</td><td>50.1197</td><td>0.158000</td><td>4.73364</td></tr>
+          <tr><td><a href="clusters/PSZ2G166.09+43.38.html">PSZ2G166.09+43.38</a></td><td>139.484</td><td>51.7221</td><td>0.217200</td><td>6.84748</td></tr>
+          <tr><td><a href="clusters/PSZ2G166.62+42.13.html">PSZ2G166.62+42.13</a></td><td>137.395</td><td>51.5489</td><td>0.232250</td><td>5.33530</td></tr>
+          <tr><td><a href="clusters/PSZ2G175.69-85.98.html">PSZ2G175.69-85.98</a></td><td>16.3760</td><td>-24.6548</td><td>0.230000</td><td>5.67255</td></tr>
+          <tr><td><a href="clusters/PSZ2G176.25-52.57.html">PSZ2G176.25-52.57</a></td><td>42.0560</td><td>-2.23740</td><td>0.236000</td><td>6.06590</td></tr>
+          <tr><td><a href="clusters/PSZ2G180.60+76.65.html">PSZ2G180.60+76.65</a></td><td>179.311</td><td>33.6110</td><td>0.213800</td><td>6.29981</td></tr>
+          <tr><td><a href="clusters/PSZ2G182.59+55.83.html">PSZ2G182.59+55.83</a></td><td>154.257</td><td>39.0280</td><td>0.206000</td><td>5.83450</td></tr>
+          <tr><td><a href="clusters/PSZ2G187.53+21.92.html">PSZ2G187.53+21.92</a></td><td>113.065</td><td>31.6261</td><td>0.171000</td><td>5.16531</td></tr>
+          <tr><td><a href="clusters/PSZ2G189.53-25.10.html">PSZ2G189.53-25.10</a></td><td>69.7681</td><td>7.26959</td><td>0.245000</td><td>6.03740</td></tr>
+          <tr><td><a href="clusters/PSZ2G195.75-24.32.html">PSZ2G195.75-24.32</a></td><td>73.5267</td><td>2.96225</td><td>0.203000</td><td>7.80038</td></tr>
+          <tr><td><a href="clusters/PSZ2G200.95-28.16.html">PSZ2G200.95-28.16</a></td><td>72.5835</td><td>-3.00734</td><td>0.220000</td><td>5.30229</td></tr>
+          <tr><td><a href="clusters/PSZ2G208.60-26.00.html">PSZ2G208.60-26.00</a></td><td>77.6869</td><td>-8.02020</td><td>0.219500</td><td>7.74384</td></tr>
+          <tr><td><a href="clusters/PSZ2G208.80-30.67.html">PSZ2G208.80-30.67</a></td><td>73.5210</td><td>-10.2263</td><td>0.247500</td><td>7.25563</td></tr>
+          <tr><td><a href="clusters/PSZ2G212.82-84.04.html">PSZ2G212.82-84.04</a></td><td>19.5485</td><td>-26.9588</td><td>0.227500</td><td>5.67925</td></tr>
+          <tr><td><a href="clusters/PSZ2G214.61-22.70.html">PSZ2G214.61-22.70</a></td><td>83.1017</td><td>-11.5431</td><td>0.154000</td><td>5.39405</td></tr>
+          <tr><td><a href="clusters/PSZ2G215.19-49.65.html">PSZ2G215.19-49.65</a></td><td>57.0011</td><td>-21.7351</td><td>0.239900</td><td>5.99348</td></tr>
+          <tr><td><a href="clusters/PSZ2G215.61+22.61.html">PSZ2G215.61+22.61</a></td><td>124.286</td><td>7.86910</td><td>0.249188</td><td>5.19491</td></tr>
+          <tr><td><a href="clusters/PSZ2G218.81+35.51.html">PSZ2G218.81+35.51</a></td><td>137.288</td><td>10.9852</td><td>0.175100</td><td>5.41821</td></tr>
+          <tr><td><a href="clusters/PSZ2G219.88+22.83.html">PSZ2G219.88+22.83</a></td><td>126.281</td><td>4.45637</td><td>0.232813</td><td>5.06793</td></tr>
+          <tr><td><a href="clusters/PSZ2G220.11+22.91.html">PSZ2G220.11+22.91</a></td><td>126.448</td><td>4.30362</td><td>0.224800</td><td>4.87473</td></tr>
+          <tr><td><a href="clusters/PSZ2G222.99-65.70.html">PSZ2G222.99-65.70</a></td><td>40.3544</td><td>-28.6594</td><td>0.232300</td><td>6.18372</td></tr>
+          <tr><td><a href="clusters/PSZ2G224.00+69.33.html">PSZ2G224.00+69.33</a></td><td>171.005</td><td>21.4894</td><td>0.190400</td><td>5.27428</td></tr>
+          <tr><td><a href="clusters/PSZ2G225.48+29.41.html">PSZ2G225.48+29.41</a></td><td>134.475</td><td>3.17442</td><td>0.203000</td><td>4.59821</td></tr>
+          <tr><td><a href="clusters/PSZ2G226.75+48.95.html">PSZ2G226.75+48.95</a></td><td>152.216</td><td>11.7897</td><td>0.224500</td><td>4.84955</td></tr>
+          <tr><td><a href="clusters/PSZ2G244.71+32.50.html">PSZ2G244.71+32.50</a></td><td>146.382</td><td>-8.64106</td><td>0.153500</td><td>5.22955</td></tr>
+          <tr><td><a href="clusters/PSZ2G249.38+33.26.html">PSZ2G249.38+33.26</a></td><td>149.602</td><td>-11.0690</td><td>0.166900</td><td>5.40662</td></tr>
+          <tr><td><a href="clusters/PSZ2G250.89-36.24.html">PSZ2G250.89-36.24</a></td><td>77.5981</td><td>-45.3292</td><td>0.200000</td><td>5.73708</td></tr>
+          <tr><td><a href="clusters/PSZ2G253.13+57.49.html">PSZ2G253.13+57.49</a></td><td>168.555</td><td>4.35088</td><td>0.229300</td><td>4.83730</td></tr>
+          <tr><td><a href="clusters/PSZ2G253.48-33.72.html">PSZ2G253.48-33.72</a></td><td>81.4626</td><td>-47.2623</td><td>0.191300</td><td>4.66970</td></tr>
+          <tr><td><a href="clusters/PSZ2G256.53-65.70.html">PSZ2G256.53-65.70</a></td><td>36.4624</td><td>-41.9214</td><td>0.219500</td><td>6.08201</td></tr>
+          <tr><td><a href="clusters/PSZ2G257.32-22.19.html">PSZ2G257.32-22.19</a></td><td>99.3256</td><td>-48.4840</td><td>0.202600</td><td>5.30653</td></tr>
+          <tr><td><a href="clusters/PSZ2G263.14-23.41.html">PSZ2G263.14-23.41</a></td><td>99.7245</td><td>-53.9814</td><td>0.226600</td><td>6.82598</td></tr>
+          <tr><td><a href="clusters/PSZ2G263.68-22.55.html">PSZ2G263.68-22.55</a></td><td>101.369</td><td>-54.2294</td><td>0.164400</td><td>7.96406</td></tr>
+          <tr><td><a href="clusters/PSZ2G280.17+47.83.html">PSZ2G280.17+47.83</a></td><td>177.447</td><td>-12.2966</td><td>0.155700</td><td>6.05530</td></tr>
+          <tr><td><a href="clusters/PSZ2G285.63+72.75.html">PSZ2G285.63+72.75</a></td><td>187.715</td><td>10.5758</td><td>0.165000</td><td>5.60704</td></tr>
+          <tr><td><a href="clusters/PSZ2G286.62-31.24.html">PSZ2G286.62-31.24</a></td><td>82.8402</td><td>-75.1931</td><td>0.210000</td><td>5.68385</td></tr>
+          <tr><td><a href="clusters/PSZ2G287.96-32.99.html">PSZ2G287.96-32.99</a></td><td>74.8492</td><td>-75.8018</td><td>0.250000</td><td>6.18318</td></tr>
+          <tr><td><a href="clusters/PSZ2G288.27+39.97.html">PSZ2G288.27+39.97</a></td><td>180.825</td><td>-21.5248</td><td>0.199200</td><td>7.16228</td></tr>
+          <tr><td><a href="clusters/PSZ2G289.13+72.19.html">PSZ2G289.13+72.19</a></td><td>188.616</td><td>9.78153</td><td>0.229000</td><td>5.87694</td></tr>
+          <tr><td><a href="clusters/PSZ2G304.65-31.66.html">PSZ2G304.65-31.66</a></td><td>354.946</td><td>-85.2180</td><td>0.193400</td><td>4.70984</td></tr>
+          <tr><td><a href="clusters/PSZ2G306.02+34.47.html">PSZ2G306.02+34.47</a></td><td>195.752</td><td>-28.3300</td><td>0.221200</td><td>4.99638</td></tr>
+          <tr><td><a href="clusters/PSZ2G309.49+37.31.html">PSZ2G309.49+37.31</a></td><td>198.631</td><td>-25.2657</td><td>0.243900</td><td>6.71655</td></tr>
+          <tr><td><a href="clusters/PSZ2G313.33+61.13.html">PSZ2G313.33+61.13</a></td><td>197.860</td><td>-1.33635</td><td>0.183200</td><td>8.76898</td></tr>
+          <tr><td><a href="clusters/PSZ2G315.56-37.04.html">PSZ2G315.56-37.04</a></td><td>328.912</td><td>-75.4309</td><td>0.233000</td><td>5.69233</td></tr>
+          <tr><td><a href="clusters/PSZ2G318.14-29.57.html">PSZ2G318.14-29.57</a></td><td>296.776</td><td>-76.4034</td><td>0.217000</td><td>5.88712</td></tr>
+          <tr><td><a href="clusters/PSZ2G322.63-49.15.html">PSZ2G322.63-49.15</a></td><td>343.531</td><td>-63.2452</td><td>0.211200</td><td>4.65140</td></tr>
+          <tr><td><a href="clusters/PSZ2G340.94+35.07.html">PSZ2G340.94+35.07</a></td><td>224.894</td><td>-18.1728</td><td>0.235700</td><td>7.79569</td></tr>
+          <tr><td><a href="clusters/PSZ2G341.44-40.19.html">PSZ2G341.44-40.19</a></td><td>315.256</td><td>-55.7166</td><td>0.250000</td><td>4.76580</td></tr>
+          <tr><td><a href="clusters/PSZ2G342.33-34.93.html">PSZ2G342.33-34.93</a></td><td>305.853</td><td>-55.5751</td><td>0.232000</td><td>6.67800</td></tr>
+          <tr><td><a href="clusters/PSZ2G346.61+35.06.html">PSZ2G346.61+35.06</a></td><td>228.752</td><td>-15.3566</td><td>0.222600</td><td>8.86078</td></tr>
+          <tr><td><a href="clusters/PSZ2G347.17-27.36.html">PSZ2G347.17-27.36</a></td><td>293.723</td><td>-50.8780</td><td>0.237100</td><td>7.18561</td></tr>
+          <tr><td><a href="clusters/PSZ2G348.43-25.50.html">PSZ2G348.43-25.50</a></td><td>291.241</td><td>-49.4085</td><td>0.250000</td><td>5.81299</td></tr>
+          <tr><td><a href="clusters/PSZ2G350.12+45.29.html">PSZ2G350.12+45.29</a></td><td>224.113</td><td>-5.81764</td><td>0.220000</td><td>5.31484</td></tr>
+          <tr><td><a href="clusters/PSZ2G355.07+46.20.html">PSZ2G355.07+46.20</a></td><td>226.023</td><td>-2.79844</td><td>0.215300</td><td>6.66621</td></tr>
+          <tr><td><a href="clusters/PSZ2G357.43+69.50.html">PSZ2G357.43+69.50</a></td><td>209.965</td><td>14.2505</td><td>0.209000</td><td>5.65635</td></tr>
+          <tr><td><a href="clusters/PSZ2G358.98-67.26.html">PSZ2G358.98-67.26</a></td><td>348.927</td><td>-37.7791</td><td>0.178600</td><td>5.22471</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </main>
 
   <footer>

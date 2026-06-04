@@ -1,9 +1,27 @@
+#!/usr/bin/env bash
+# Generate clusters/(name).html for every cluster in lowm.txt and highm.txt.
+# Run this script from the directory that contains data.html, i.e.:
+#   bash make_cluster_pages.sh
+# The two data files are expected in the same directory as the script.
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CLUSTERS_DIR="$SCRIPT_DIR/clusters"
+mkdir -p "$CLUSTERS_DIR"
+
+make_page() {
+  local name="$1"
+  local dest="$CLUSTERS_DIR/${name}.html"
+
+  # Remove any directory that might exist at this path before writing
+  [[ -d "$dest" ]] && rm -rf "$dest"
+
+  cat > "$dest" << HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CEREAL Data Products</title>
+  <title>${name} — CEREAL Data Products</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,14 +69,6 @@
 
     .logo span { color: var(--accent); }
 
-    .tagline {
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-style: italic;
-    }
-
     nav {
       margin-left: auto;
       display: flex;
@@ -84,7 +94,7 @@
     }
 
     .eyebrow {
-      font-size: 1.0rem;
+      font-size: 0.75rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
@@ -100,7 +110,6 @@
       letter-spacing: 0.02em;
       margin-bottom: 2rem;
       text-transform: uppercase;
-      white-space: nowrap;
     }
 
     .divider {
@@ -111,7 +120,7 @@
       box-shadow: 0 0 8px var(--glow);
     }
 
-    .description {
+    p {
       font-size: 1.15rem;
       line-height: 1.9;
       color: var(--ink);
@@ -120,19 +129,9 @@
       margin-bottom: 1.5rem;
     }
 
-    main a:link {
-      color: var(--accent2);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    main a:visited {
-      color: #e0aaff;
-    }
-
-    main a:hover {
-      color: #fff;
-    }
+    main a:link    { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
+    main a:visited { color: #e0aaff; }
+    main a:hover   { color: #fff; }
 
     footer {
       border-top: 1px solid var(--rule);
@@ -151,19 +150,20 @@
 <body>
 
   <header>
-    <a class="logo" href="index.html">CEREAL<span>.</span></a>
+    <a class="logo" href="../index.html">CEREAL<span>.</span></a>
     <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="data.html">Data</a>
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../data.html" class="active">Data</a>
     </nav>
   </header>
 
   <main>
-    <p class="eyebrow">Welcome</p>
-    <h1>CEREAL Data Products</h1>
+    <p class="eyebrow">Cluster</p>
+    <h1>${name}</h1>
     <div class="divider"></div>
-    <p class="description">This website will host the complete set of data products describing the Cluster Evolutionary Reference Ensemble at Low-z (CEREAL) galaxy cluster sample.</p>
+    <p>More info on ${name} coming soon.</p>
+    <p><a href="../data.html">&larr; Back to Data</a></p>
   </main>
 
   <footer>
@@ -173,3 +173,20 @@
 
 </body>
 </html>
+HTML
+}
+
+count=0
+for file in "$SCRIPT_DIR/lowm.txt" "$SCRIPT_DIR/highm.txt"; do
+  if [[ ! -f "$file" ]]; then
+    echo "Warning: $file not found, skipping." >&2
+    continue
+  fi
+  while read -r name _rest; do
+    [[ -z "$name" ]] && continue
+    make_page "$name"
+    (( count++ ))
+  done < "$file"
+done
+
+echo "Created $count cluster pages in $CLUSTERS_DIR/"
