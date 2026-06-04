@@ -19,7 +19,7 @@ make_page() {
   # Build the image block only if the file exists
   local img_block=""
   if [[ -f "$img_path" ]]; then
-    img_block="    <div class=\"cluster-img\"><img src=\"../files/${name}/${name}_not_labeled.png\" alt=\"${name}\" /></div>"
+    img_block="    <div class=\"cluster-img\"><img src=\"../files/${name}/${name}_labeled.png\" alt=\"${name}\" /></div>"
   fi
 
   cat > "$dest" << HTML
@@ -200,14 +200,14 @@ count=0
 
 while read -r name _rest; do
   [[ -z "$name" ]] && continue
-  img="$HOME/homeDropbox/lowmcereal/data/${name}/figures/${name}_not_labeled.png"
+  img="$HOME/homeDropbox/lowmcereal/data/${name}/figures/${name}_labeled.png"
   make_page "$name" "$img"
   (( count++ ))
 done < "$SCRIPT_DIR/lowm.txt"
 
 while read -r name _rest; do
   [[ -z "$name" ]] && continue
-  img="$HOME/homeDropbox/cereal/data/${name}/figures/${name}_not_labeled.png"
+  img="$HOME/homeDropbox/cereal/data/${name}/figures/${name}_labeled.png"
   make_page "$name" "$img"
   (( count++ ))
 done < "$SCRIPT_DIR/highm.txt"
