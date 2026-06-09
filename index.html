@@ -146,6 +146,26 @@
       color: var(--muted);
       font-style: italic;
     }
+    figure {
+      margin-top: 2.5rem;
+      max-width: 860px;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--rule);
+      box-shadow: 0 0 32px var(--glow);
+    }
+
+    figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -164,6 +184,10 @@
     <h1>CEREAL Data Products</h1>
     <div class="divider"></div>
     <p class="description">This website will host the complete set of data products describing the Cluster Evolutionary Reference Ensemble at Low-z (CEREAL) galaxy cluster sample.</p>
+    <figure>
+      <img src="grid.png" alt="X-ray images of CEREAL galaxy clusters" />
+      <figcaption>Chandra X-ray images of most of the high-mass clusters in the CEREAL sample.</figcaption>
+    </figure>
   </main>
 
   <footer>
