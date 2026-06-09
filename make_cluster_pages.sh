@@ -11,6 +11,10 @@ mkdir -p "$CLUSTERS_DIR"
 make_page() {
   local name="$1"
   local img_path="$2"
+  local ra="$3"
+  local dec="$4"
+  local redshift="$5"
+  local m500="$6"
   local dest="$CLUSTERS_DIR/${name}.html"
 
   # Remove any directory that might exist at this path before writing
@@ -263,6 +267,7 @@ make_page() {
     <p class="eyebrow">Cluster</p>
     <h1>${name}</h1>
     <div class="divider"></div>
+    <p>RA: ${ra}&ensp;&middot;&ensp;Dec: ${dec}&ensp;&middot;&ensp;<i>z</i>: ${redshift}&ensp;&middot;&ensp;<i>M</i><sub>500</sub>: ${m500} &times; 10<sup>14</sup> M<sub>&#x2609;</sub></p>
 ${img_block}
     <div class="section">
       <h2>Emission Measure Profiles</h2>
@@ -331,17 +336,17 @@ HTML
 
 count=0
 
-while read -r name _rest; do
+while read -r name ra dec redshift m500 _rest; do
   [[ -z "$name" ]] && continue
   img="$HOME/homeDropbox/lowmcereal/data/${name}/figures/${name}_not_labeled.png"
-  make_page "$name" "$img"
+  make_page "$name" "$img" "$ra" "$dec" "$redshift" "$m500"
   (( count++ ))
 done < "$SCRIPT_DIR/lowm.txt"
 
-while read -r name _rest; do
+while read -r name ra dec redshift m500 _rest; do
   [[ -z "$name" ]] && continue
   img="$HOME/homeDropbox/cereal/data/${name}/figures/${name}_not_labeled.png"
-  make_page "$name" "$img"
+  make_page "$name" "$img" "$ra" "$dec" "$redshift" "$m500"
   (( count++ ))
 done < "$SCRIPT_DIR/highm.txt"
 
