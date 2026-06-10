@@ -192,6 +192,10 @@
       border-bottom-color: #fff;
     }
 
+    main a:link    { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
+    main a:visited { color: #e0aaff; }
+    main a:hover   { color: #fff; }
+
     footer {
       border-top: 1px solid var(--rule);
       padding: 1.5rem 3rem;
@@ -221,7 +225,7 @@
     <h1>Data</h1>
     <div class="divider"></div>
 
-    <p>Below are two tables containing the information for the low-mass and high-mass CEREAL subsamples. For each cluster, there is the Planck name, the decimal coordinates, and the mass and redshift values derived from Planck. Note that we used corrected versions of the Planck masses for most of the analyses as described in Paper II.</p>
+    <p>Below are two tables containing the information for the low-mass and high-mass CEREAL subsamples. For each cluster, there is the Planck name, the decimal coordinates, and the mass and redshift values derived from Planck. Note that we used corrected versions of the Planck masses for most of the analyses. Specifically, we applied a correction \(\log_{10} M_{500,\mathrm{true}} = -3.18 + 1.22 \log_{10} M_{500,\mathrm{PSZ}}\), as described in <a href="about.html#publications">Paper II</a>.</p>
 
     <p>Clicking on the name of each cluster will take you to a webpage containing a cluster image as well as its emission measure and temperature profiles.</p>
 

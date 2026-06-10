@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — CEREAL Data Products</title>
   <link rel="stylesheet" href="fonts/eb-garamond.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -103,6 +104,32 @@
       white-space: nowrap;
     }
 
+    h2 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.45rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1.25rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .cluster-img {
+      margin-bottom: 2rem;
+    }
+
+    .cluster-img img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--rule);
+      box-shadow: 0 0 24px var(--glow);
+    }
+
     .divider {
       width: 3rem;
       height: 1px;
@@ -162,8 +189,22 @@
   <main>
     <h1>About the CEREAL Sample</h1>
     <div class="divider"></div>
-    <p>The complete set of observations comprising the CEREAL sample is available in <a href="https://doi.org/10.25574/cdc.482">Chandra Data Collection 482</a>. New data were collected as part of Chandra program 23800272 and Chandra program 25800481.</p>
-    <p>The CEREAL sample is described further in <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ae4ec3">The Cluster Evolutionary Reference Ensemble at Low-z (CEREAL) Sample of Galaxy Clusters. I. X-Ray Morphological Properties and Demographics.</a></p>
+
+    <div class="section">
+      <h2>Data</h2>
+      <p>The complete set of observations comprising the CEREAL sample is available in <a href="https://doi.org/10.25574/cdc.482">Chandra Data Collection 482</a>. New data were collected as part of Chandra program 23800272 and Chandra program 25800481.</p>
+    </div>
+
+    <div class="section">
+      <h2 id="publications">Publications</h2>
+      <p>The CEREAL sample is described further in <a href="https://iopscience.iop.org/article/10.3847/1538-4357/ae4ec3">"The Cluster Evolutionary Reference Ensemble at Low-z (CEREAL) Sample of Galaxy Clusters. I. X-Ray Morphological Properties and Demographics"</a> (Paper I) and "The Cluster Evolutionary Reference Ensemble at Low-$z$ (CEREAL) Sample of Galaxy Clusters II: Thermodynamic Profiles and Cool Core Properties" (<span id="paper-ii">Paper II</span>; submitted to ApJ).</p>
+    </div>
+
+    <div class="section">
+      <h2>Selection</h2>
+      <p>The figure below shows the selection criteria for the high-mass and low-mass CEREAL subsamples. The grey stars represent all known clusters from the second Planck catalog. The high-mass clusters have masses in the range \(4.5 \times 10^{14}\ M_\odot < M_{500} < 10 \times 10^{14}\ M_\odot\) and redshifts \(0.15 < z < 0.25\). The low-mass clusters have masses \(2.0 \times 10^{14}\ M_\odot < M_{500} < 4.5 \times 10^{14}\ M_\odot\) and redshifts \(0.085 < z < 0.125\). We remove clusters falling within \(20°\) of the Galactic plane as well as a handful of low S/N clusters as described in Papers I and II, leaving us with 108 high-mass and 60 low-mass clusters.</p>
+      <div class="cluster-img"><img src="images/selection.png" alt="CEREAL sample selection" /></div>
+    </div>
   </main>
 
   <footer>
