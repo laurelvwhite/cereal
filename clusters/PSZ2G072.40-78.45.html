@@ -138,18 +138,51 @@
       box-shadow: 0 0 24px var(--glow);
     }
 
-    .cluster-img-cropped {
-      margin-bottom: 2rem;
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
     }
 
-    .cluster-img-cropped img {
-      width: 521px;
-      height: 521px;
-      object-fit: none;
-      object-position: -110px -2px;
-      display: block;
-      border: 1px solid var(--rule);
-      box-shadow: 0 0 24px var(--glow);
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+
+    thead tr {
+      background: rgba(155, 93, 229, 0.12);
+      border-bottom: 1px solid var(--accent);
+    }
+
+    thead th {
+      padding: 0.75rem 1.1rem;
+      text-align: left;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--accent2);
+      font-weight: 600;
+      white-space: normal;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.12s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr:hover {
+      background: rgba(155, 93, 229, 0.07);
+    }
+
+    tbody td {
+      padding: 0.55rem 1.1rem;
+      color: var(--ink);
+      opacity: 0.88;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
 
     main a:link    { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
@@ -185,21 +218,76 @@
     <p class="eyebrow">Cluster</p>
     <h1>PSZ2G072.40-78.45</h1>
     <div class="divider"></div>
-    <p>RA: 3.431&ensp;&middot;&ensp;Dec: -19.486&ensp;&middot;&ensp;<i>z</i>: 0.094&ensp;&middot;&ensp;<i>M</i><sub>500</sub>: 2.757 &times; 10<sup>14</sup> M<sub>&#x2609;</sub></p>
-    <p>To download the raw data for this cluster, you can <a href="https://cda.cfa.harvard.edu/chaser/" target="_blank" onclick="navigator.clipboard.writeText('PSZ2G072.40-78.45');setTimeout(function(){alert('Cluster name copied! Paste it into the Target Name field in ChaSeR.');},100);">Search ChaSeR</a>. Following this link will copy the cluster name to your clipboard. Paste it into the &ldquo;Target Name&rdquo; search box, click &ldquo;Resolve Name&rdquo;, then click &ldquo;Search&rdquo; to return all relevant observations.</p>
-    <div class="cluster-img-cropped"><img src="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_not_labeled.png" alt="PSZ2G072.40-78.45" /></div>
+    <p>RA: 3.43054&ensp;&middot;&ensp;Dec: -19.4862&ensp;&middot;&ensp;<i>z</i>: 0.0940000&ensp;&middot;&ensp;<i>M</i><sub>500</sub>: 2.75662 &times; 10<sup>14</sup> M<sub>&#x2609;</sub></p>
+    <div class="cluster-img"><img src="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_not_labeled.png" alt="PSZ2G072.40-78.45" /></div>
     <div class="section">
       <h2>Emission Measure Profiles</h2>
       <p>Here is the best-fit emission measure profile:</p>
-      <div class="cluster-img"><img src="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_EM.png" alt="PSZ2G072.40-78.45 emission measure profile" /></div>
-      <p>The annular profile information is available in file format here: <a href="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_EM.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">PSZ2G072.40-78.45_EM.txt</a></p>
+      <div class="cluster-img"><img src="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_SB.png" alt="PSZ2G072.40-78.45 emission measure profile" /></div>
+      <p>The annular profile information is given in the table below, or it is available in file format here: <a href="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_SB.data" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">PSZ2G072.40-78.45_SB.data</a></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>\(r_{\rm inner}\) (pixels)</th>
+              <th>\(r_{\rm outer}\) (pixels)</th>
+              <th>kT (keV)</th>
+              <th>Z</th>
+              <th>EM \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
+              <th>EM\(_{\rm low}\) \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
+              <th>EM\(_{\rm high}\) \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr><td>0.0</td><td>13.520577745201845</td><td>3.8136917</td><td>0.3210308638</td><td>7.983301454000363e-05</td><td>5.3795691480002444e-05</td><td>0.00011283475020000514</td></tr>
+          <tr><td>13.520577745201845</td><td>26.872097527716484</td><td>3.8136917</td><td>0.3210308638</td><td>5.941214930000289e-05</td><td>3.820077098000186e-05</td><td>8.64360081400042e-05</td></tr>
+          <tr><td>26.872097527716484</td><td>54.41410875901164</td><td>3.8136917</td><td>0.3210308638</td><td>0.00023847723180002095</td><td>0.0001992452569000175</td><td>0.00028204244380002476</td></tr>
+          <tr><td>54.41410875901164</td><td>95.09770954835214</td><td>3.824474265</td><td>0.3202770761</td><td>0.0006173801173000241</td><td>0.0005570309780000218</td><td>0.0006815356736000267</td></tr>
+          <tr><td>95.09770954835214</td><td>147.87399800500285</td><td>4.173190028</td><td>0.294560353</td><td>0.0008535109754860672</td><td>0.0007854908300265902</td><td>0.000924904407169428</td></tr>
+          <tr><td>147.87399800500285</td><td>211.69407223822833</td><td>4.271419352</td><td>0.2499863666</td><td>0.0009560951109899904</td><td>0.0008803206298975229</td><td>0.0010353663444123906</td></tr>
+          <tr><td>211.69407223822833</td><td>285.5090303572936</td><td>4.226277012</td><td>0.2083684445</td><td>0.0007704511372675803</td><td>0.0006983353240416391</td><td>0.0008460974364755887</td></tr>
+          <tr><td>285.5090303572936</td><td>368.26997047146347</td><td>4.095051702</td><td>0.1699294151</td><td>0.0008582971332222591</td><td>0.0007791351796209531</td><td>0.00094099540409308</td></tr>
+          <tr><td>368.26997047146347</td><td>458.92799069000256</td><td>3.907380068</td><td>0.1437712354</td><td>0.0005335210733475896</td><td>0.00045999524582670257</td><td>0.0006108266492573634</td></tr>
+          <tr><td>458.92799069000256</td><td>556.434189122176</td><td>3.68592743</td><td>0.1229703439</td><td>0.00047607192043734543</td><td>0.0003967008440618907</td><td>0.0005596384939365968</td></tr>
+          <tr><td>556.434189122176</td><td>659.7396638772482</td><td>3.45096899</td><td>0.10103915</td><td>0.00011811977603009007</td><td>4.7699140884859455e-05</td><td>0.00019314212805436183</td></tr>
+          <tr><td>659.7396638772482</td><td>767.795513064484</td><td>3.301481563</td><td>0.08773685616</td><td>8.637707974296893e-05</td><td>7.427357318130438e-06</td><td>0.00017019065589363877</td></tr>
+          <tr><td>767.795513064484</td><td>879.5528347931486</td><td>3.301481563</td><td>0.08773685616</td><td>0.00012149386773227663</td><td>3.360876512541124e-05</td><td>0.0002144236149565246</td></tr>
+          <tr><td>879.5528347931486</td><td>993.9627271725067</td><td>3.301481563</td><td>0.08773685616</td><td>1.9017070707266283e-05</td><td>0.0</td><td>0.00012248563648085975</td></tr>
+          <tr><td>993.9627271725067</td><td>1109.9762883118226</td><td>3.301481563</td><td>0.08773685616</td><td>6.838021094268643e-05</td><td>0.0</td><td>0.00021002779335134707</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="section">
       <h2>Temperature Profiles</h2>
       <p>Here is the best-fit temperature profile:</p>
       <div class="cluster-img"><img src="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_kT.png" alt="PSZ2G072.40-78.45 temperature profile" /></div>
-      <p>The annular profile information is available in file format here: <a href="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_kT.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">PSZ2G072.40-78.45_kT.txt</a></p>
+      <p>The annular profile information is given in the table below, or it is available in file format here: <a href="../files/PSZ2G072.40-78.45/PSZ2G072.40-78.45_kT.data" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">PSZ2G072.40-78.45_kT.data</a></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>\(r_{\rm inner}\) (pixels)</th>
+              <th>\(r_{\rm outer}\) (pixels)</th>
+              <th>kT (keV)</th>
+              <th>kT\(_{\rm low}\) (keV)</th>
+              <th>kT\(_{\rm high}\) (keV)</th>
+              <th>Z</th>
+              <th>Z\(_{\rm low}\)</th>
+              <th>Z\(_{\rm high}\)</th>
+              <th>EM \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
+              <th>EM\(_{\rm low}\) \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
+              <th>EM\(_{\rm high}\) \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr><td>0.0</td><td>147.87399800499924</td><td>5.131512282</td><td>4.285760988</td><td>6.535509402</td><td>0.2421930443</td><td>0.02713864605</td><td>0.5395452349</td><td>0.001701414054</td><td>0.001535403169</td><td>0.001876136734</td></tr>
+          <tr><td>147.87399800499924</td><td>285.5090303572867</td><td>3.810031944</td><td>3.210110999</td><td>4.599311379</td><td>0.207160152</td><td>0</td><td>0.5146674251</td><td>0.001791996323</td><td>0.001570525258</td><td>0.002046984673</td></tr>
+          <tr><td>285.5090303572867</td><td>458.9279906899913</td><td>3.275873413</td><td>2.68701349</td><td>4.319183668</td><td>0.03797117511</td><td>0</td><td>0.4676370441</td><td>0.001569928403</td><td>0.001262426184</td><td>0.001824410956</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <p><a href="../data.html">&larr; Back to Data</a></p>
