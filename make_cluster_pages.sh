@@ -16,35 +16,16 @@ make_page() {
   local redshift="$5"
   local m500="$6"
   local dest="$CLUSTERS_DIR/${name}.html"
+  local ra_fmt=$(printf "%.3f" "$ra")
+  local dec_fmt=$(printf "%.3f" "$dec")
+  local redshift_fmt=$(printf "%.3f" "$redshift")
+  local m500_fmt=$(printf "%.3f" "$m500")
 
   # Remove any directory that might exist at this path before writing
   [[ -d "$dest" ]] && rm -rf "$dest"
 
-  # Build the image block only if the file exists
-  local img_block=""
-  if [[ -f "$img_path" ]]; then
-    img_block="    <div class=\"cluster-img\"><img src=\"../files/${name}/${name}_not_labeled.png\" alt=\"${name}\" /></div>"
-  fi
-
-  # Build SB data table rows
-  local sb_rows=""
-  local sb_file="$SCRIPT_DIR/files/${name}/${name}_SB.data"
-  if [[ -f "$sb_file" ]]; then
-    while IFS=',' read -r r_in r_out kt z em em_lo em_hi; do
-      sb_rows="${sb_rows}          <tr><td>${r_in}</td><td>${r_out}</td><td>${kt}</td><td>${z}</td><td>${em}</td><td>${em_lo}</td><td>${em_hi}</td></tr>
-"
-    done < "$sb_file"
-  fi
-
-  # Build kT data table rows
-  local kt_rows=""
-  local kt_file="$SCRIPT_DIR/files/${name}/${name}_kT.data"
-  if [[ -f "$kt_file" ]]; then
-    while IFS=',' read -r r_in r_out kt kt_lo kt_hi z z_lo z_hi em em_lo em_hi; do
-      kt_rows="${kt_rows}          <tr><td>${r_in}</td><td>${r_out}</td><td>${kt}</td><td>${kt_lo}</td><td>${kt_hi}</td><td>${z}</td><td>${z_lo}</td><td>${z_hi}</td><td>${em}</td><td>${em_lo}</td><td>${em_hi}</td></tr>
-"
-    done < "$kt_file"
-  fi
+  # Always include the cluster image block; browser will handle missing files
+  local img_block="    <div class=\"cluster-img-cropped\"><img src=\"../files/${name}/${name}_not_labeled.png\" alt=\"${name}\" /></div>"
 
   cat > "$dest" << HTML
 <!DOCTYPE html>
@@ -187,51 +168,18 @@ make_page() {
       box-shadow: 0 0 24px var(--glow);
     }
 
-    .table-wrap {
-      overflow-x: auto;
+    .cluster-img-cropped {
+      margin-bottom: 2rem;
+    }
+
+    .cluster-img-cropped img {
+      width: 521px;
+      height: 521px;
+      object-fit: none;
+      object-position: -110px -2px;
+      display: block;
       border: 1px solid var(--rule);
-      border-radius: 4px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.92rem;
-      font-family: 'EB Garamond', Georgia, serif;
-    }
-
-    thead tr {
-      background: rgba(155, 93, 229, 0.12);
-      border-bottom: 1px solid var(--accent);
-    }
-
-    thead th {
-      padding: 0.75rem 1.1rem;
-      text-align: left;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      color: var(--accent2);
-      font-weight: 600;
-      white-space: normal;
-    }
-
-    tbody tr {
-      border-bottom: 1px solid var(--rule);
-      transition: background 0.12s;
-    }
-
-    tbody tr:last-child { border-bottom: none; }
-
-    tbody tr:hover {
-      background: rgba(155, 93, 229, 0.07);
-    }
-
-    tbody td {
-      padding: 0.55rem 1.1rem;
-      color: var(--ink);
-      opacity: 0.88;
-      font-variant-numeric: tabular-nums;
-      white-space: nowrap;
+      box-shadow: 0 0 24px var(--glow);
     }
 
     main a:link    { color: var(--accent2); text-decoration: underline; text-underline-offset: 3px; }
@@ -267,58 +215,21 @@ make_page() {
     <p class="eyebrow">Cluster</p>
     <h1>${name}</h1>
     <div class="divider"></div>
-    <p>RA: ${ra}&ensp;&middot;&ensp;Dec: ${dec}&ensp;&middot;&ensp;<i>z</i>: ${redshift}&ensp;&middot;&ensp;<i>M</i><sub>500</sub>: ${m500} &times; 10<sup>14</sup> M<sub>&#x2609;</sub></p>
+    <p>RA: ${ra_fmt}&ensp;&middot;&ensp;Dec: ${dec_fmt}&ensp;&middot;&ensp;<i>z</i>: ${redshift_fmt}&ensp;&middot;&ensp;<i>M</i><sub>500</sub>: ${m500_fmt} &times; 10<sup>14</sup> M<sub>&#x2609;</sub></p>
+    <p>To download the raw data for this cluster, you can <a href="https://cda.cfa.harvard.edu/chaser/" target="_blank" onclick="navigator.clipboard.writeText('${name}');setTimeout(function(){alert('Cluster name copied! Paste it into the Target Name field in ChaSeR.');},100);">Search ChaSeR</a>. Following this link will copy the cluster name to your clipboard. Paste it into the &ldquo;Target Name&rdquo; search box, click &ldquo;Resolve Name&rdquo;, then click &ldquo;Search&rdquo; to return all relevant observations.</p>
 ${img_block}
     <div class="section">
       <h2>Emission Measure Profiles</h2>
       <p>Here is the best-fit emission measure profile:</p>
-      <div class="cluster-img"><img src="../files/${name}/${name}_SB.png" alt="${name} emission measure profile" /></div>
-      <p>The annular profile information is given in the table below, or it is available in file format here: <a href="../files/${name}/${name}_SB.data" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">${name}_SB.data</a></p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>\(r_{\rm inner}\) (pixels)</th>
-              <th>\(r_{\rm outer}\) (pixels)</th>
-              <th>kT (keV)</th>
-              <th>Z</th>
-              <th>EM \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
-              <th>EM\(_{\rm low}\) \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
-              <th>EM\(_{\rm high}\) \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
-            </tr>
-          </thead>
-          <tbody>
-${sb_rows}          </tbody>
-        </table>
-      </div>
+      <div class="cluster-img"><img src="../files/${name}/${name}_EM.png" alt="${name} emission measure profile" /></div>
+      <p>The annular profile information is available in file format here: <a href="../files/${name}/${name}_EM.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">${name}_EM.txt</a></p>
     </div>
 
     <div class="section">
       <h2>Temperature Profiles</h2>
       <p>Here is the best-fit temperature profile:</p>
       <div class="cluster-img"><img src="../files/${name}/${name}_kT.png" alt="${name} temperature profile" /></div>
-      <p>The annular profile information is given in the table below, or it is available in file format here: <a href="../files/${name}/${name}_kT.data" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">${name}_kT.data</a></p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>\(r_{\rm inner}\) (pixels)</th>
-              <th>\(r_{\rm outer}\) (pixels)</th>
-              <th>kT (keV)</th>
-              <th>kT\(_{\rm low}\) (keV)</th>
-              <th>kT\(_{\rm high}\) (keV)</th>
-              <th>Z</th>
-              <th>Z\(_{\rm low}\)</th>
-              <th>Z\(_{\rm high}\)</th>
-              <th>EM \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
-              <th>EM\(_{\rm low}\) \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
-              <th>EM\(_{\rm high}\) \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\)</th>
-            </tr>
-          </thead>
-          <tbody>
-${kt_rows}          </tbody>
-        </table>
-      </div>
+      <p>The annular profile information is available in file format here: <a href="../files/${name}/${name}_kT.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">${name}_kT.txt</a></p>
     </div>
 
     <p><a href="../data.html">&larr; Back to Data</a></p>
@@ -338,15 +249,13 @@ count=0
 
 while read -r name ra dec redshift m500 _rest; do
   [[ -z "$name" ]] && continue
-  img="$HOME/homeDropbox/lowmcereal/data/${name}/figures/${name}_not_labeled.png"
-  make_page "$name" "$img" "$ra" "$dec" "$redshift" "$m500"
+  make_page "$name" "" "$ra" "$dec" "$redshift" "$m500"
   (( count++ ))
 done < "$SCRIPT_DIR/lowm.txt"
 
 while read -r name ra dec redshift m500 _rest; do
   [[ -z "$name" ]] && continue
-  img="$HOME/homeDropbox/cereal/data/${name}/figures/${name}_not_labeled.png"
-  make_page "$name" "$img" "$ra" "$dec" "$redshift" "$m500"
+  make_page "$name" "" "$ra" "$dec" "$redshift" "$m500"
   (( count++ ))
 done < "$SCRIPT_DIR/highm.txt"
 
