@@ -26,7 +26,7 @@ make_page() {
 
   # Always include the cluster image block; browser will handle missing files
   local img_block="    <div class=\"cluster-img-cropped\"><img src=\"../files/${name}/${name}_not_labeled.png\" alt=\"${name}\" /></div>
-    <p>Download the adaptively smoothed cluster image here: <a href=\"../files/${name}/${name}_adaptively_smoothed.img\" download style=\"color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;\">${name}_adaptively_smoothed.img</a></p>"
+    <p>Download a FITS file containing the adaptively smoothed cluster image shown above: <a href=\"../files/${name}/${name}_adaptively_smoothed.img\" download style=\"color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;\">${name}_adaptively_smoothed.img</a></p>"
 
   cat > "$dest" << HTML
 <!DOCTYPE html>
