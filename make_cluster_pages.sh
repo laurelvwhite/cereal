@@ -167,7 +167,6 @@ make_page() {
       display: block;
       border: 1px solid var(--rule);
       box-shadow: 0 0 24px var(--glow);
-      filter: brightness(1.1) contrast(1.3);
     }
 
     .cluster-img-cropped {
@@ -225,14 +224,23 @@ ${img_block}
       <h2>Emission Measure Profiles</h2>
       <p>Here is the best-fit emission measure profile:</p>
       <div class="cluster-img"><img src="../files/${name}/${name}_EM.png" alt="${name} emission measure profile" /></div>
-      <p>The annular profile information is available in file format here: <a href="../files/${name}/${name}_EM.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">${name}_EM.txt</a></p>
+      <p>The EM data points are available in file format here: <a href="../files/${name}/${name}_EM.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">${name}_EM.txt</a></p>
+      <p>The columns in this file are: (1) \(r_{\rm inner}\) (pixels), (2) \(r_{\rm outer}\) (pixels), (3) kT (keV), (4) Z, (5) EM \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\), (6) EM\(_{\rm low}\), (7) EM\(_{\rm high}\).</p>
+      <p>The best-fit density model can be downloaded <a href="../files/${name}/${name}_ne.model" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">here</a> and the best-fit EM model can be downloaded <a href="../files/${name}/${name}_SB.model" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">here</a>. The first column in each file is the radius (in kpc) and the second column is the model evaluated at that radius (in \(\mathrm{cm}^{-3}\) or \(\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}\)). The models have been evaluated from the midpoint of the innermost density bin to the midpoint of the outermost density bin.</p>
     </div>
 
     <div class="section">
       <h2>Temperature Profiles</h2>
       <p>Here is the best-fit temperature profile:</p>
       <div class="cluster-img"><img src="../files/${name}/${name}_kT.png" alt="${name} temperature profile" /></div>
-      <p>The annular profile information is available in file format here: <a href="../files/${name}/${name}_kT.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">${name}_kT.txt</a></p>
+      <p>The temperature data points are available in file format here: <a href="../files/${name}/${name}_kT.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">${name}_kT.txt</a></p>
+      <p>The columns in this file are: (1) \(r_{\rm inner}\) (pixels), (2) \(r_{\rm outer}\) (pixels), (3) kT (keV), (4) kT\(_{\rm low}\) (keV), (5) kT\(_{\rm high}\) (keV), (6) Z, (7) Z\(_{\rm low}\), (8) Z\(_{\rm high}\), (9) EM \((\int \mathrm{n}_p \mathrm{n}_e \mathrm{dl}~[10^{60}~\mathrm{cm}^{-5}~\mathrm{kpc}^{-2}])\), (10) EM\(_{\rm low}\), (11) EM\(_{\rm high}\).</p>
+      <p>The best-fit deprojected temperature model can be downloaded <a href="../files/${name}/${name}_kT_3D.model" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">here</a> and the best-fit projected temperature model can be downloaded <a href="../files/${name}/${name}_kT_projected.model" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">here</a>. The first column in each file is the radius (in kpc) and the second column is the model evaluated at that radius (in keV). The models have been evaluated from the midpoint of the innermost density bin to the midpoint of the outermost density bin.</p>
+    </div>
+
+    <div class="section">
+      <h2>All Models</h2>
+      <p>All models can be found in a combined table <a href="../files/${name}/${name}_all.model" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">here</a>. The columns are: radius, density, EM, kT (deprojected), and kT (projected).</p>
     </div>
 
     <p><a href="../data.html">&larr; Back to Data</a></p>

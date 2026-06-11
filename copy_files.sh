@@ -22,6 +22,25 @@ while read -r name _rest; do
     echo "Warning: image not found for ${name}: $src" >&2
     (( missing++ ))
   fi
+  for model in ne.model kT_projected.model kT_3D.model all.model; do
+    src_model="$HOME/homeDropbox/lowmcereal/data/${name}/specfits/${model}"
+    dest_model="${dest_dir}/${name}_${model}"
+    if [[ -f "$src_model" ]]; then
+      cp "$src_model" "$dest_model"
+      (( count++ ))
+    else
+      echo "Warning: model not found for ${name}: $src_model" >&2
+      (( missing++ ))
+    fi
+  done
+  src_model="$HOME/homeDropbox/lowmcereal/data/${name}/specfits/SB.model"
+  if [[ -f "$src_model" ]]; then
+    cp "$src_model" "${dest_dir}/${name}_EM.model"
+    (( count++ ))
+  else
+    echo "Warning: model not found for ${name}: $src_model" >&2
+    (( missing++ ))
+  fi
 done < "$SCRIPT_DIR/lowm.txt"
 
 while read -r name _rest; do
@@ -34,6 +53,25 @@ while read -r name _rest; do
     (( count++ ))
   else
     echo "Warning: files not found for ${name}: $src" >&2
+    (( missing++ ))
+  fi
+  for model in ne.model kT_projected.model kT_3D.model all.model; do
+    src_model="$HOME/homeDropbox/cereal/data/${name}/specfits/${model}"
+    dest_model="${dest_dir}/${name}_${model}"
+    if [[ -f "$src_model" ]]; then
+      cp "$src_model" "$dest_model"
+      (( count++ ))
+    else
+      echo "Warning: model not found for ${name}: $src_model" >&2
+      (( missing++ ))
+    fi
+  done
+  src_model="$HOME/homeDropbox/cereal/data/${name}/specfits/SB.model"
+  if [[ -f "$src_model" ]]; then
+    cp "$src_model" "${dest_dir}/${name}_EM.model"
+    (( count++ ))
+  else
+    echo "Warning: model not found for ${name}: $src_model" >&2
     (( missing++ ))
   fi
 done < "$SCRIPT_DIR/highm.txt"
