@@ -105,6 +105,16 @@
       margin-bottom: 1.25rem;
     }
 
+    h3 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
     .divider {
       width: 3rem;
       height: 1px;
@@ -224,14 +234,19 @@
   <main>
     <h1>Data</h1>
     <div class="divider"></div>
-    <p>A table containing various calculated values as described in <a href="about.html#publications">Paper I</a> for all clusters in the CEREAL sample is available <a href="files/cereal_metadata.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">here</a>. The columns are: (1) cluster name, (2) RA of the cluster center used for the analysis (J2000 decimal degrees), (3) dec of the cluster center used for the analysis, (4) the surface brightness concentration calculated using 40 and 400 kpc apertures (csb_physical), (5) the error in csb_physical, (6) the surface brightness concentration calculated using \(0.15R_{500}\)- and \(R_{500}\)-sized apertures (csb_scaled), (7) the error in csb_scaled, (8) the centroid shift (w), (9) the error in w, (10) the excess nuclear luminosity in the 2-10 keV band (nuc_lum), and (11) the error in nuc_lum.</p>
-
-    <p>Below are two tables containing the information for the low-mass and high-mass CEREAL subsamples. For each cluster, there is the Planck name, the decimal coordinates, and the mass and redshift values derived from Planck. Note that we used corrected versions of the Planck masses for most of the analyses. Specifically, we applied a correction \(\log_{10} M_{500,\mathrm{true}} = -3.18 + 1.22 \log_{10} M_{500,\mathrm{PSZ}}\), as described in <a href="about.html#publications">Paper II</a>.</p>
-
-    <p>Clicking on the name of each cluster will take you to a webpage containing a cluster image as well as its emission measure and temperature profiles.</p>
+    <div class="section">
+      <h2>Full Sample</h2>
+      <p>To download a tar file containing the data for all clusters, click <a href="all_cluster_files.tar.gz" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">here</a>. This file contains directories for each cluster housing the images, emission measure and temperature data files, and emission measure and temperature models, as described on the individual cluster webpages linked below.</p>
+      <p>A table containing various calculated values as described in <a href="about.html#publications">Paper I</a> for all clusters in the CEREAL sample is available <a href="files/cereal_metadata.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">here</a>. The columns are: (1) cluster name, (2) RA of the cluster center used for the analysis (J2000 decimal degrees), (3) dec of the cluster center used for the analysis, (4) the surface brightness concentration calculated using 40 and 400 kpc apertures (csb_physical), (5) the error in csb_physical, (6) the surface brightness concentration calculated using \(0.15R_{500}\)- and \(R_{500}\)-sized apertures (csb_scaled), (7) the error in csb_scaled, (8) the centroid shift (w), (9) the error in w, (10) the excess nuclear luminosity in the 2-10 keV band (nuc_lum), and (11) the error in nuc_lum.</p>
+    </div>
 
     <div class="section">
-      <h2>Low-Mass Clusters</h2>
+      <h2>Individual Clusters</h2>
+      <p>Below are two tables containing the information for the low-mass and high-mass CEREAL subsamples. For each cluster, there is the Planck name, the decimal coordinates, and the mass and redshift values derived from Planck. Note that we used corrected versions of the Planck masses for most of the analyses. Specifically, we applied a correction \(\log_{10} M_{500,\mathrm{true}} = -3.18 + 1.22 \log_{10} M_{500,\mathrm{PSZ}}\), as described in <a href="about.html#publications">Paper II</a>.</p>
+      <p>Clicking on the name of each cluster will take you to a webpage containing a cluster image as well as its emission measure and temperature profiles.</p>
+
+      <div class="section">
+        <h3>Low-Mass Clusters</h3>
       <p>These data are also available in file format here: <a href="lowm.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">lowm.txt</a></p>
       <div class="table-wrap">
         <table>
@@ -308,11 +323,11 @@
           </tbody>
         </table>
       </div>
-    </div>
+      </div>
 
-    <div class="section">
-      <h2>High-Mass Clusters</h2>
-      <p>These data are also available in file format here: <a href="highm.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">highm.txt</a></p>
+      <div class="section">
+        <h3>High-Mass Clusters</h3>
+        <p>These data are also available in file format here: <a href="highm.txt" download style="color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(199, 125, 255, 0.3); transition: color 0.15s, border-color 0.15s;">highm.txt</a></p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -435,6 +450,7 @@
           <tr><td><a href="clusters/PSZ2G358.98-67.26.html">PSZ2G358.98-67.26</a></td><td>348.927</td><td>-37.7791</td><td>0.178600</td><td>5.22471</td></tr>
           </tbody>
         </table>
+      </div>
       </div>
     </div>
 
