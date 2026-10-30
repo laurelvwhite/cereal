@@ -4,7 +4,7 @@ type: dataset
 title: "Data products for The Cluster Evolutionary Reference Ensemble at Low-z (CEREAL) Sample of Galaxy Clusters II: Thermodynamic Profiles and Cool Core Properties"
 version: 1.0.0
 license: CC-BY-4.0
-doi: 10.5281/zenodo.23811137
+doi: 10.5281/zenodo.23811587
 authors:
   - given-names: Laurel
     family-names: White
