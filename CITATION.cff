@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use these data, please cite both the associated paper and this archive."
+type: dataset
+title: "Data products for The Cluster Evolutionary Reference Ensemble at Low-z (CEREAL) Sample of Galaxy Clusters II: Thermodynamic Profiles and Cool Core Properties"
+version: 1.0.0
+license: CC-BY-4.0
+authors:
+  - given-names: Laurel
+    family-names: White
+    affiliation: "Massachusetts Institute of Technology"
+    orcid: "https://orcid.org/0000-0001-6699-1300"
+  - given-names: Michael
+    family-names: McDonald
+    affiliation: "Massachusetts Institute of Technology"
+    orcid: "https://orcid.org/0000-0001-5226-8349"
+  - given-names: Julie
+    family-names: Hlavacek-Larrondo
+    affiliation: "Université de Montréal"
+    orcid: "https://orcid.org/0000-0001-7271-7340"
+  - given-names: Taweewat
+    family-names: Somboonpanyakul
+    affiliation: "Chulalongkorn University"
+    orcid: "https://orcid.org/0000-0003-3521-3631"
+keywords:
+  - galaxy clusters
+  - intracluster medium
+  - cool cores
+  - thermodynamic profiles
+  - X-ray astronomy
+# Uncomment and fill in once you have the URLs:
+# url: "https://[username].github.io/[repo-name]/"
+# repository-code: "https://github.com/[username]/[repo-name]"
